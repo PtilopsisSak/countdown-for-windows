@@ -6,6 +6,7 @@
 
 
 ## 效果图
+![countdown-for-windows](materials/preview.gif)
 
 
 ## 使用
