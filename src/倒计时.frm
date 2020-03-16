@@ -167,6 +167,8 @@ Dim lx, bm, ly, targetday, targettime, high, f1, TITLE1, f2, x1
 Dim mode As Boolean
 Dim c(3), n
 Dim co
+Dim ori(1 To 8)
+
 
 
 
@@ -213,7 +215,7 @@ co = RGB(255, 255, 255)
             k = k + 1
 
         Line Input #lngHandle, strLine '每次读取一行存放在strLine变量中
-        
+        ori(k) = strLine
     Select Case k
     Case 1
         targetday = strLine
@@ -239,6 +241,7 @@ co = RGB(255, 255, 255)
     End Select
     Loop
     
+    Close lngHandle
 
 Dim rtn As Long
 Me.BackColor = co1
@@ -257,7 +260,7 @@ End Sub
 
 
 Private Sub labelload()
-z = Len(CStr(c(0)))
+If c(0) >= 0 Then z = Len(CStr(c(0))) Else z = 1
 For i = 0 To 3
 Label3(i).ForeColor = co
 Label3(i).FontSize = f2
@@ -323,7 +326,32 @@ End If
 End If
 End Sub
 Private Sub Label4_MouseUp(Index As Integer, Button As Integer, Shift As Integer, X As Single, Y As Single)
- If Index = 0 Then bm = False
+ If Index = 0 Then
+ bm = False
+ Dim strFileName As String
+Dim lngHandle As Long
+Dim strWrite As String
+
+strFileName = App.Path + "\setting.txt"
+lngHandle = FreeFile()
+strWrite = ori(1)
+strWrite = strWrite & vbCrLf & ori(2)
+strWrite = strWrite & vbCrLf & ori(3)
+strWrite = strWrite & vbCrLf & ori(4)
+strWrite = strWrite & vbCrLf & ori(5)
+strWrite = strWrite & vbCrLf & ori(6)
+strWrite = strWrite & vbCrLf & CStr(Form1.Left) & "          '窗体默认加载x坐标"
+strWrite = strWrite & vbCrLf & CStr(Form1.Top) & "          '窗体默认加载y坐标"
+    Open strFileName For Output As lngHandle
+    Print #lngHandle, strWrite
+    Close lngHandle
+
+
+
+
+
+ 
+ End If
 End Sub
 
 
