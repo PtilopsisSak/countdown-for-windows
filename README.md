@@ -12,7 +12,7 @@
 ## 使用
 
 下载文件，可以只下载CountDown.exe这一个文件，其他文件是源代码以及其他一些东西，只是用的话没有必要
-
+[下载CountDown.exe](https://github.com/PtilopsisSak/countdown-for-windows/raw/master/CountDown.exe)
 双击可执行程序运行
 
 
